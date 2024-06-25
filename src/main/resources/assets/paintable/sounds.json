@@ -8,13 +8,13 @@
     ],
     "subtitle": "subtitles.item.paint_brush.dipping"
   },
-  "item.paint_brush.paintable": {
+  "item.paint_brush.painting": {
     "sounds": [
-      "paintable:item/paint_brush/paintable1",
-      "paintable:item/paint_brush/paintable2",
-      "paintable:item/paint_brush/paintable3",
-      "paintable:item/paint_brush/paintable4"
+      "paintable:item/paint_brush/painting1",
+      "paintable:item/paint_brush/painting2",
+      "paintable:item/paint_brush/painting3",
+      "paintable:item/paint_brush/painting4"
     ],
-    "subtitle": "subtitles.item.paint_brush.paintable"
+    "subtitle": "subtitles.item.paint_brush.painting"
   }
 }

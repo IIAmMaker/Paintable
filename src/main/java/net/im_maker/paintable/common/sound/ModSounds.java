@@ -16,8 +16,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> PAINT_BRUSH_PAINT = registerSoundEvents("item.paint_brush.paint");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
-        ResourceLocation id = new ResourceLocation(Paintable.MOD_ID, name);
-        return SOUND_EVENTS.register(name, () -> new SoundEvent(id));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Paintable.MOD_ID, name)));
     }
 
     public static void register(IEventBus eventBus) {
