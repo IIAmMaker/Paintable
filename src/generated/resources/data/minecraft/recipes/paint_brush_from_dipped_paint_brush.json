@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "tag": "paintable:dipped_paint_brush"
+    }
+  ],
+  "result": {
+    "item": "paintable:paint_brush"
+  }
+}

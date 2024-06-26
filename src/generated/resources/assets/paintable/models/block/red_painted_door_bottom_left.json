@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "paintable:block/red_painted_door_bottom",
+    "top": "paintable:block/red_painted_door_top"
+  }
+}

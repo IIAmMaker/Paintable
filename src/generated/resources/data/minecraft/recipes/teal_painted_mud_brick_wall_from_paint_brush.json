@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:teal_paint_brush"
+    },
+    {
+      "tag": "paintable:paintable_mud_brick_walls"
+    }
+  ],
+  "result": {
+    "item": "paintable:teal_painted_mud_brick_wall"
+  }
+}

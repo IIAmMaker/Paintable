@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "paintable:navy_painted_bricks"
+  },
+  "result": "paintable:navy_painted_brick_slab"
+}

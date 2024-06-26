@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:olive_paint_brush"
+    },
+    {
+      "tag": "paintable:paintable_mud_brick_slabs"
+    }
+  ],
+  "result": {
+    "item": "paintable:olive_painted_mud_brick_slab"
+  }
+}

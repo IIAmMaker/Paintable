@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:gray_dye"
+    },
+    "P": {
+      "item": "paintable:paint_bucket"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    " D ",
+    "DWD",
+    " P "
+  ],
+  "result": {
+    "item": "paintable:gray_paint_bucket"
+  },
+  "show_notification": true
+}

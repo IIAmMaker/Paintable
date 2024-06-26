@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "paintable:filled_paint_bucket"
+    }
+  ],
+  "result": {
+    "item": "paintable:paint_bucket"
+  }
+}

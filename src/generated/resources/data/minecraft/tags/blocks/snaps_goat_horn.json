@@ -1,0 +1,20 @@
+{
+  "values": [
+    "paintable:white_painted_log",
+    "paintable:light_gray_painted_log",
+    "paintable:gray_painted_log",
+    "paintable:black_painted_log",
+    "paintable:brown_painted_log",
+    "paintable:red_painted_log",
+    "paintable:orange_painted_log",
+    "paintable:yellow_painted_log",
+    "paintable:lime_painted_log",
+    "paintable:green_painted_log",
+    "paintable:cyan_painted_log",
+    "paintable:light_blue_painted_log",
+    "paintable:blue_painted_log",
+    "paintable:purple_painted_log",
+    "paintable:magenta_painted_log",
+    "paintable:pink_painted_log"
+  ]
+}

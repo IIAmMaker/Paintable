@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:magenta_paint_brush"
+    },
+    {
+      "tag": "paintable:paintable_mud_brick_stairs"
+    }
+  ],
+  "result": {
+    "item": "paintable:magenta_painted_mud_brick_stairs"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "paintable:gray_paint_bucket",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "paint_level": "4"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "paintable:gray_paint_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "paintable:gray_paint_bucket",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "paint_level": "3"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "paintable:paint_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "paintable:gray_paint_bucket",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "paint_level": "2"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "paintable:paint_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "paintable:gray_paint_bucket",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "paint_level": "1"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "paintable:paint_bucket"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "paintable:gray_paint_bucket",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "paint_level": "0"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "add": false,
+              "count": 1.0,
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "paintable:paint_bucket"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "paintable:blocks/gray_paint_bucket"
+}

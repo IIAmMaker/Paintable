@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:green_paint_brush"
+    },
+    {
+      "tag": "paintable:paintable_brick_wall"
+    }
+  ],
+  "result": {
+    "item": "paintable:green_painted_brick_wall"
+  }
+}

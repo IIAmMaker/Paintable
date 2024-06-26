@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aqua_painted_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paintable:aqua_painted_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:aqua_painted_planks_from_paint_brush"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_aqua_painted_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:aqua_painted_planks_from_paint_brush"
+    ]
+  },
+  "sends_telemetry_event": false
+}
