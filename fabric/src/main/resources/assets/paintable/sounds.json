@@ -1,0 +1,20 @@
+{
+  "item.paint_brush.dipping": {
+    "sounds": [
+      "paintable:item/paint_brush/dipping1",
+      "paintable:item/paint_brush/dipping2",
+      "paintable:item/paint_brush/dipping3",
+      "paintable:item/paint_brush/dipping4"
+    ],
+    "subtitle": "subtitles.item.paint_brush.dipping"
+  },
+  "item.paint_brush.painting": {
+    "sounds": [
+      "paintable:item/paint_brush/painting1",
+      "paintable:item/paint_brush/painting2",
+      "paintable:item/paint_brush/painting3",
+      "paintable:item/paint_brush/painting4"
+    ],
+    "subtitle": "subtitles.item.paint_brush.painting"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "paintable:amber_painted_bricks"
+  },
+  "result": "paintable:amber_painted_brick_slab"
+}

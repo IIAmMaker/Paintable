@@ -1,0 +1,21 @@
+{
+  "values": [
+    "waxed:wax_block",
+    "waxed:white_wax_block",
+    "waxed:orange_wax_block",
+    "waxed:magenta_wax_block",
+    "waxed:light_blue_wax_block",
+    "waxed:yellow_wax_block",
+    "waxed:lime_wax_block",
+    "waxed:pink_wax_block",
+    "waxed:gray_wax_block",
+    "waxed:light_gray_wax_block",
+    "waxed:cyan_wax_block",
+    "waxed:purple_wax_block",
+    "waxed:blue_wax_block",
+    "waxed:brown_wax_block",
+    "waxed:green_wax_block",
+    "waxed:red_wax_block",
+    "waxed:black_wax_block"
+  ]
+}

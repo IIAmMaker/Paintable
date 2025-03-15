@@ -1,0 +1,12 @@
+{
+  "type": "paintable:painting",
+  "unpainted_block": {
+      "tag": "minecraft:sand"
+    },
+  "brush": {
+      "item": "minecraft:stick"
+    },
+  "result_block": {
+    "item": "minecraft:tnt"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "paintable:verdant_painted_mud_bricks"
+  },
+  "result": "paintable:verdant_painted_mud_brick_stairs"
+}

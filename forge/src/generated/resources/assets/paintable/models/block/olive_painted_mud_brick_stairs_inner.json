@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "paintable:block/olive_painted_mud_bricks",
+    "side": "paintable:block/olive_painted_mud_bricks",
+    "top": "paintable:block/olive_painted_mud_bricks"
+  }
+}

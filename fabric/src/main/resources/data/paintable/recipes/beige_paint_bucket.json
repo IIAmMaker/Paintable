@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": [],
+    "P": {
+      "item": "paintable:paint_bucket"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    " D ",
+    "DWD",
+    " P "
+  ],
+  "result": {
+    "item": "paintable:beige_paint_bucket"
+  },
+  "show_notification": true
+}

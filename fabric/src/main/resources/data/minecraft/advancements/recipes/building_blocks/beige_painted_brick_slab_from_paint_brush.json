@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beige_painted_brick_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paintable:beige_painted_brick_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:beige_painted_brick_slab_from_paint_brush"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_beige_painted_brick_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:beige_painted_brick_slab_from_paint_brush"
+    ]
+  },
+  "sends_telemetry_event": false
+}

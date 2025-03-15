@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "paintable:block/tan_painted_log_top",
+    "side": "paintable:block/tan_painted_log"
+  }
+}

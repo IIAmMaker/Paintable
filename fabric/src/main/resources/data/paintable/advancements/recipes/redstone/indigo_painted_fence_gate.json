@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_indigo_painted_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paintable:indigo_painted_planks"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "paintable:indigo_painted_fence_gate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_indigo_painted_planks",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "paintable:indigo_painted_fence_gate"
+    ]
+  },
+  "sends_telemetry_event": false
+}

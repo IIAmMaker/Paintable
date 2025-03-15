@@ -1,0 +1,30 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "paintable:item/olive_paint_brush"
+  },
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "paintable:item/olive_paint_brush_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "paintable:item/olive_paint_brush"
+      }
+    },
+    "ground": {
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "paintable:item/olive_paint_brush"
+      }
+    },
+    "fixed": {
+      "parent": "minecraft:item/handheld",
+      "textures": {
+        "layer0": "paintable:item/olive_paint_brush"
+      }
+    }
+  }
+}

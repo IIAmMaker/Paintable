@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "paintable:block/navy_painted_mud_bricks",
+    "side": "paintable:block/navy_painted_mud_bricks",
+    "top": "paintable:block/navy_painted_mud_bricks"
+  }
+}

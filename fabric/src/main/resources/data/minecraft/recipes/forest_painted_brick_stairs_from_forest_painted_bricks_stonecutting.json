@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "paintable:forest_painted_bricks"
+  },
+  "result": "paintable:forest_painted_brick_stairs"
+}

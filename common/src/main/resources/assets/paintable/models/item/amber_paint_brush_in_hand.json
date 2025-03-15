@@ -1,0 +1,6 @@
+{
+  "parent": "paintable:item/template_paint_brush_in_hand",
+  "textures": {
+    "paint_brush": "paintable:item/amber_paint_brush_in_hand"
+  }
+}

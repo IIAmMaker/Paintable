@@ -1,0 +1,168 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'maven-publish'
+    id 'fabric-loom'
+}
+base {
+    archivesName = "${mod_name}-fabric-${minecraft_version}"
+}
+
+//repositories {
+//    maven {
+//        url = "https://api.modrinth.com/maven"
+//    }
+//    maven {
+//        name = 'Curse Maven'
+//        url = "https://cursemaven.com"
+//    }
+//}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        name = 'Sponge / Mixin'
+        url = 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+    maven {
+        name = 'BlameJared Maven (JEI / CraftTweaker / Bookshelf)'
+        url = 'https://maven.blamejared.com'
+    }
+    maven {
+        name = 'Curse Maven'
+        url = "https://cursemaven.com"
+    }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
+    //so dye mod doesn't crash
+    maven { url = "https://maven.shedaniel.me/" } // Cloth Config, REI
+    maven { url = "https://maven.blamejared.com/" } // JEI
+    maven { url = "https://maven.parchmentmc.org" } // Parchment mappings
+    maven { url = "https://maven.quiltmc.org/repository/release" } // Quilt Mappings
+    maven { url = "https://api.modrinth.com/maven" } // LazyDFU
+    maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
+    maven { url = "https://mvn.devos.one/snapshots/" } // Create, Porting Lib, Forge Tags, Milk Lib, Registrate
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config API Port
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+    maven { url = "https://jitpack.io" } // Mixin Extras, Fabric ASM
+    maven { url = "https://maven.tterrag.com/" } // Flywheel
+    maven { url = 'https://maven.ladysnake.org/releases' }
+    maven { url = "https://dvs1.progwml6.com/files/maven/" } // location of the maven that hosts JEI files before January 2023
+    maven { url = "https://maven.blamejared.com/" } // location of the maven that hosts JEI files since January 2023
+    maven { url = "https://modmaven.dev" } // location of a maven mirror for JEI files, as a fallback
+    maven { url = "https://maven.architectury.dev" }
+    maven { url = "https://mvn.devos.one/snapshots/" } 	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
+    maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' } // Geckolib
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    implementation project(":common")
+    modImplementation "maven.modrinth:modmenu:7.2.2"
+
+    modImplementation "maven.modrinth:dye-depot:1.0.3-fabric"
+    modImplementation "maven.modrinth:cloth-config:2xQdCMyG"
+    //modImplementation "maven.modrinth:el-and-ls-dye-mod:gkHi8CC0"
+    //modImplementation "maven.modrinth:fabric-api:P7uGFii0"
+    //modImplementation "maven.modrinth:Ha28R6CL:o0V8mlNz"
+//
+    //modImplementation "maven.modrinth:geckolib:9VG3hx3F"
+    modImplementation "maven.modrinth:jei:AFNTMB1o"
+    //implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.20" // Replace 1.x.x with the version you need.
+    //// fabric-asm / Manningham-Mills
+    //modImplementation 'com.github.Chocohead:Fabric-ASM:v2.0.1'
+    //include 'com.github.Chocohead:Fabric-ASM:v2.0.1'
+
+    //Gotta keep
+    //modImplementation "curse.maven:decorative-blocks-362528:5089408"
+    //modImplementation "curse.maven:ecologics-570463:4857271"
+    //modImplementation "curse.maven:cloth-config-348521:4973440"
+    //modImplementation "curse.maven:dramatic-doors-380617:5476685"
+    //modImplementation "curse.maven:excessive-building-845097:5765499"
+    //modImplementation "curse.maven:forge-config-api-port-fabric-547434:4583000"
+    //modImplementation "maven.modrinth:el-and-ls-dye-mod:1.0.4+1.20.1"
+    //modImplementation "curse.maven:geckolib-388172:5675212"
+    //modImplementation("net.fabricmc:fabric-language-kotlin:1.12.3+kotlin.2.0.21")
+    //modImplementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")
+    //modImplementation "org.jetbrains.kotlin:kotlin-reflect:2.0.21"
+    //implementation("com.eliotlash.mclib:mclib:${mclib_version}")
+
+    ////so dye mod doesn't crash
+    //// REI
+    //modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")
+    //modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
+    ////BetterEnd
+    //modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
+    //modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
+    //modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
+    //// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
+    //modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
+    //modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
+    //modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
+    //modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
+    //modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
+    //modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
+    //modCompileOnly("maven.modrinth:botania:${botania_version}")
+    //// Create - dependencies are added transitively
+    //modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
+    //include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
+    ////-----------------------------------
+}
+
+loom {
+    if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists()) {
+        accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
+    }
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    source(project(":common").sourceSets.main.allSource)
+}
+tasks.withType(Javadoc).configureEach {
+    source(project(":common").sourceSets.main.allJava)
+}
+tasks.named("sourcesJar", Jar) {
+    from(project(":common").sourceSets.main.allSource)
+}
+
+processResources {
+    from project(":common").sourceSets.main.resources
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId base.archivesName.get()
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://" + System.getenv("local_maven")
+        }
+    }
+}

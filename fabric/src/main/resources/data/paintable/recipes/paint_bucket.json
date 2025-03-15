@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "N": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "pattern": [
+    " N ",
+    "NBN"
+  ],
+  "result": {
+    "item": "paintable:paint_bucket"
+  },
+  "show_notification": true
+}

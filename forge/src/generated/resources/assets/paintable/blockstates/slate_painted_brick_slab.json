@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "paintable:block/slate_painted_brick_slab"
+    },
+    "type=double": {
+      "model": "paintable:block/slate_painted_bricks"
+    },
+    "type=top": {
+      "model": "paintable:block/slate_painted_brick_slab_top"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "paintable:block/template_paint_bucket_level3",
+  "textures": {
+    "paint_bucket": "paintable:block/forest_paint_bucket"
+  }
+}

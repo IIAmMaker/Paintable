@@ -1,0 +1,20 @@
+{
+  "values": [
+    "paintable:white_paint_bucket",
+    "paintable:light_gray_paint_bucket",
+    "paintable:gray_paint_bucket",
+    "paintable:black_paint_bucket",
+    "paintable:brown_paint_bucket",
+    "paintable:red_paint_bucket",
+    "paintable:orange_paint_bucket",
+    "paintable:yellow_paint_bucket",
+    "paintable:lime_paint_bucket",
+    "paintable:green_paint_bucket",
+    "paintable:cyan_paint_bucket",
+    "paintable:light_blue_paint_bucket",
+    "paintable:blue_paint_bucket",
+    "paintable:purple_paint_bucket",
+    "paintable:magenta_paint_bucket",
+    "paintable:pink_paint_bucket"
+  ]
+}

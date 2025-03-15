@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_indigo_painted_button": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "paintable:indigo_painted_button"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:indigo_painted_button_from_paint_brush"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_indigo_painted_button",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:indigo_painted_button_from_paint_brush"
+    ]
+  },
+  "sends_telemetry_event": false
+}
