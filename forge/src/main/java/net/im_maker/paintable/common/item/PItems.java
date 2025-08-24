@@ -18,7 +18,7 @@ public class PItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, Paintable.MOD_ID);
     public static final RegistryObject<Item> PAINT_BRUSH = ITEMS.register("paint_brush", () -> new PaintBrushItem(new Item.Properties().stacksTo(1)));
-    public static final List<RegistryObject<Item>> DIPPED_PAINT_BRUSH = registerColoredPaintBrushes();
+    public static final List<RegistryObject<Item>> DIPPED_PAINT_BRUSHES = registerColoredPaintBrushes();
     public static final List<RegistryObject<Item>> PAINTED_SIGNS = registerColoredSigns();
     public static final List<RegistryObject<Item>> PAINTED_HANGING_SIGNS = registerColoredHangingSigns();
     public static final List<RegistryObject<Item>> PAINTED_BOATS = registerColoredBoats(false);
@@ -28,7 +28,7 @@ public class PItems {
         List<RegistryObject<T>> coloredItems = new ArrayList<>();
         for (DyeColor color : DyeColor.values()) {
             String itemID = color.getName() + "_" + "paint_brush";
-            RegistryObject<T> item = (RegistryObject<T>) ITEMS.register(itemID, () -> new DippedPaintBrushItem(color, new Item.Properties().stacksTo(1).durability(16)));
+            RegistryObject<T> item = (RegistryObject<T>) ITEMS.register(itemID, () -> new DippedPaintBrushItem(color, new Item.Properties().stacksTo(1)));
             coloredItems.add(item);
         }
         return coloredItems;

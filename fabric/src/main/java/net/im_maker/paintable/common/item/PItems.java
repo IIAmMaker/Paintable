@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PItems {
     public static final Item PAINT_BRUSH = registerItem("paint_brush", new PaintBrushItem(new Item.Properties().stacksTo(1)));
-    public static final List<Item> DIPPED_PAINT_BRUSH = registerColoredPaintBrushes();
+    public static final List<Item> DIPPED_PAINT_BRUSHES = registerColoredPaintBrushes();
     public static final List<Item> PAINTED_SIGNS = registerColoredSigns();
     public static final List<Item> PAINTED_HANGING_SIGNS = registerColoredHangingSigns();
     public static final List<Item> PAINTED_BOATS = registerColoredBoats(false);
@@ -28,7 +28,7 @@ public class PItems {
         List<Item> coloredItems = new ArrayList<>();
         for (DyeColor color : DyeColor.values()) {
             String itemID = color.getName() + "_" + "paint_brush";
-            Item item = registerItem(itemID, new DippedPaintBrushItem(color, new Item.Properties().stacksTo(1).durability(16)));
+            Item item = registerItem(itemID, new DippedPaintBrushItem(color, new Item.Properties().stacksTo(1)));
             coloredItems.add(item);
         }
         return coloredItems;
