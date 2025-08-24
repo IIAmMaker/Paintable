@@ -84,6 +84,12 @@ repositories {
     maven {
         url = "https://api.modrinth.com/maven"
     }
+    repositories {
+        maven { url = "https://maven.minecraftforge.net" }
+        maven { url = "https://repo.spongepowered.org/maven" }
+        mavenCentral()
+    }
+
 }
 
 dependencies {

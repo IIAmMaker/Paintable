@@ -56,6 +56,14 @@ repositories {
     maven { url = "https://maven.architectury.dev" }
     maven { url = "https://mvn.devos.one/snapshots/" } 	// Create, Porting Lib, Forge Tags, Milk Lib, Registrate
     maven { url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' } // Geckolib
+
+
+    maven {
+        url "https://maven.blamejared.com"
+        content {
+            includeGroup "mezz.jei"
+        }
+    }
 }
 
 dependencies {
@@ -66,55 +74,20 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":common")
     modImplementation "maven.modrinth:modmenu:7.2.2"
-
     modImplementation "maven.modrinth:dye-depot:1.0.3-fabric"
     modImplementation "maven.modrinth:cloth-config:2xQdCMyG"
-    //modImplementation "maven.modrinth:el-and-ls-dye-mod:gkHi8CC0"
-    //modImplementation "maven.modrinth:fabric-api:P7uGFii0"
-    //modImplementation "maven.modrinth:Ha28R6CL:o0V8mlNz"
-//
-    //modImplementation "maven.modrinth:geckolib:9VG3hx3F"
+
+    modImplementation "mezz.jei:jei-1.20.1-fabric:15.2.0.27"
     modImplementation "maven.modrinth:jei:AFNTMB1o"
-    //implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.20" // Replace 1.x.x with the version you need.
-    //// fabric-asm / Manningham-Mills
-    //modImplementation 'com.github.Chocohead:Fabric-ASM:v2.0.1'
-    //include 'com.github.Chocohead:Fabric-ASM:v2.0.1'
+    modImplementation(include("me.shedaniel.cloth:cloth-config-fabric:11.1.106"))
 
-    //Gotta keep
-    //modImplementation "curse.maven:decorative-blocks-362528:5089408"
-    //modImplementation "curse.maven:ecologics-570463:4857271"
-    //modImplementation "curse.maven:cloth-config-348521:4973440"
-    //modImplementation "curse.maven:dramatic-doors-380617:5476685"
-    //modImplementation "curse.maven:excessive-building-845097:5765499"
-    //modImplementation "curse.maven:forge-config-api-port-fabric-547434:4583000"
-    //modImplementation "maven.modrinth:el-and-ls-dye-mod:1.0.4+1.20.1"
-    //modImplementation "curse.maven:geckolib-388172:5675212"
-    //modImplementation("net.fabricmc:fabric-language-kotlin:1.12.3+kotlin.2.0.21")
-    //modImplementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}")
-    //modImplementation "org.jetbrains.kotlin:kotlin-reflect:2.0.21"
-    //implementation("com.eliotlash.mclib:mclib:${mclib_version}")
-
-    ////so dye mod doesn't crash
-    //// REI
-    //modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:$rei_version")
-    //modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
-    ////BetterEnd
-    //modCompileOnly("maven.modrinth:gc8OEnCC:${betterend_version}")
-    //modCompileOnly("com.github.quiqueck:BCLib:${bclib_version}")
-    //modCompileOnly("com.github.quiqueck:WunderLib:${wunderlib_version}")
-    //// Botania  	// this doesn't run here with modImpl but it does run in prod. So I'm chill with it.
-    //modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
-    //modCompileOnly("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
-    //modCompileOnly("maven.modrinth:trinkets:${trinkets_version}")
-    //modCompileOnly("me.zeroeightsix:fiber:${fiber_version}")
-    //modCompileOnly("com.github.emilyploszaj:step-height-entity-attribute:${step_height_version}")
-    //modCompileOnly("maven.modrinth:patchouli:${patchouli_version}")
-    //modCompileOnly("maven.modrinth:botania:${botania_version}")
-    //// Create - dependencies are added transitively
-    //modCompileOnly("com.simibubi.create:create-fabric-${minecraft_version}:${create_version}")
-    //include(modImplementation('com.github.Chocohead:Fabric-ASM:v2.3'))
-    ////-----------------------------------
-}
+    modImplementation "maven.modrinth:cloth-config:2xQdCMyG"
+    modImplementation "maven.modrinth:modmenu:7.2.2"
+    modImplementation "maven.modrinth:supplementaries:7Z1u8P8P"
+    modImplementation "maven.modrinth:supplementaries-squared:1.20-1.1.23"
+    modImplementation "maven.modrinth:amendments:1.20-2.2.1"
+    modImplementation "maven.modrinth:moonlight:1.20-2.16.5-fabric"
+    }
 
 loom {
     if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists()) {
