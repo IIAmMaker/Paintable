@@ -24,7 +24,7 @@ public class PTags {
         public static final TagKey<Block> PAINTABLE_CONCRETE = tag("paintable_concrete");
         public static final TagKey<Block> PAINTABLE_CONCRETE_VANILLA = tag("paintable_concrete_vanilla");
         public static final TagKey<Block> PAINTABLE_CONCRETE_DYE_DEPOT = tag("paintable_concrete_dye_depot");
-        public static final TagKey<Block> TOGGLEABLE = tag("toggleable");
+        public static final TagKey<Block> TOGGLEABLE = tag("paintable/toggleable");
         public static final TagKey<Block> PAINT_BRUSH_WASHING_BLOCKS = tag("paint_brush_washing_blocks");
         public static final TagKey<Block>[] PAINTED_LOG_TAGS = createPaintedLogTags();
         public static TagKey<Block> create(ResourceLocation name) {

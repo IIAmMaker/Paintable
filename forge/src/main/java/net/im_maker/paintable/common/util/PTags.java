@@ -16,7 +16,7 @@ public class PTags {
 
     public static class Blocks {
         public static final TagKey<Block> FILLED_PAINT_BUCKET = tag("filled_paint_bucket");
-        public static final TagKey<Block> TOGGLEABLE = tag("toggleable");
+        public static final TagKey<Block> TOGGLEABLE = tag("paintable/toggleable");
         public static final TagKey<Block> PAINT_BRUSH_WASHING_BLOCKS = tag("paint_brush_washing_blocks");
         public static final TagKey<Block>[] PAINTED_LOG_TAGS = createPaintedLogTags();
 
