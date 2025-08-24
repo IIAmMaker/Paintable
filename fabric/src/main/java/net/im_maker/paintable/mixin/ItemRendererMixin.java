@@ -26,7 +26,7 @@ public abstract class ItemRendererMixin {
             return ((ItemRendererAccessor) this).paintable$getItemModelShaper().getModelManager().getModel(new ModelResourceLocation(Paintable.MOD_ID, "paint_brush_in_hand", "inventory"));
         }
         for (DyeColor color : DyeColor.values()) {
-            if (stack.is(PItems.DIPPED_PAINT_BRUSH.get(color.getId())) && b) {
+            if (stack.is(PItems.DIPPED_PAINT_BRUSHES.get(color.getId())) && b) {
                 return ((ItemRendererAccessor) this).paintable$getItemModelShaper().getModelManager().getModel(new ModelResourceLocation(Paintable.MOD_ID, color + "_paint_brush_in_hand", "inventory"));
             }
         }
