@@ -275,7 +275,7 @@ public class Paintable {
             EntityRenderers.register(PEntities.CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
             ItemBlockRenderTypes.setRenderLayer(getBlockFromString("paint_bucket"), RenderType.cutout());
             for (DyeColor color : DyeColor.values()) {
-                RenderType renderTypeForDoors = color.getName().equals("cyan") || color.getName().equals("forest") ||color.getName().equals("olive") ? RenderType.translucent() : RenderType.cutout();
+                RenderType renderTypeForDoors = color.getName().equals("cyan") || color.getName().equals("forest") || color.getName().equals("olive") ? RenderType.translucent() : RenderType.cutout();
                 ItemBlockRenderTypes.setRenderLayer(getBlockFromString(color + "_paint_bucket"), RenderType.cutout());
                 ItemBlockRenderTypes.setRenderLayer(getBlockFromString(color + "_painted_door"), renderTypeForDoors);
                 ItemBlockRenderTypes.setRenderLayer(getBlockFromString(color + "_painted_trapdoor"), renderTypeForDoors);
