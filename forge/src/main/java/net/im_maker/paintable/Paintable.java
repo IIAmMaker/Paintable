@@ -70,7 +70,6 @@ public class Paintable {
         PItems.register(modEventBus);
         PaintableSounds.register(modEventBus);
         PEntities.register(modEventBus);
-        PRecipeSerializers.register(modEventBus);
         modEventBus.addListener(this::clientSetup);
         modEventBus.addListener(this::addCreative);
     }
