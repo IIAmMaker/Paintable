@@ -1,17 +1,15 @@
 package net.im_maker.paintable;
 
 import com.ninni.dye_depot.registry.DDDyes;
+import net.im_maker.paintable.client.PntRenderer;
 import net.im_maker.paintable.common.block.ModBlocks;
 import net.im_maker.paintable.common.block.entity.ModBlockEntities;
 import net.im_maker.paintable.common.entity.PEntities;
 import net.im_maker.paintable.client.ModBoatRenderer;
-import net.im_maker.paintable.client.ModModelLayers;
 import net.im_maker.paintable.common.item.PItems;
 import net.im_maker.paintable.common.sound.PaintableSounds;
 import net.im_maker.paintable.common.util.PaintableWoodTypes;
-import net.im_maker.paintable.common.util.crafting.PRecipeSerializers;
-import net.minecraft.client.model.BoatModel;
-import net.minecraft.client.model.ChestBoatModel;
+import net.im_maker.paintable.config.PaintableConfig;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -270,12 +268,6 @@ public class Paintable {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void registerLayer (EntityRenderersEvent.RegisterLayerDefinitions event) {
-            for (DyeColor color : DyeColor.values()) {
-                if (color.getId() < 16) {
-                    event.registerLayerDefinition(ModModelLayers.PAINTED_BOATS_LAYERS.get(color.getId()), BoatModel::createBodyModel);
-                    event.registerLayerDefinition(ModModelLayers.PAINTED_CHEST_BOATS_LAYERS.get(color.getId()), ChestBoatModel::createBodyModel);
-                }
-            }
         }
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
