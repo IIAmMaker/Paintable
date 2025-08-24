@@ -11,15 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.Optional;
 
 public class DataPackRegistrar {
-    //private static void registerBuiltinResourcePack(ModContainer modContainer, String forModID) {
-    //    ResourceManagerHelper.registerBuiltinResourcePack(
-    //            new ResourceLocation(Paintable.MOD_ID, forModID + "_resource_pack"),
-    //            modContainer,
-    //            Component.translatable("pack." + Paintable.MOD_ID + "." + forModID),
-    //            ResourcePackActivationType.ALWAYS_ENABLED
-    //    );
-    //}
-    private static void registerBuiltinDataPack(ModContainer modContainer, String packId) {
+
+    private static void registerBuiltinDyeDepotDataPack(ModContainer modContainer, String packId) {
         ResourceManagerHelper.registerBuiltinResourcePack(
                 new ResourceLocation(Paintable.MOD_ID, packId),
                 modContainer,
@@ -28,11 +21,23 @@ public class DataPackRegistrar {
         );
     }
 
+    private static void registerBuiltinSupplementariesDataPack(ModContainer modContainer, String packId) {
+        ResourceManagerHelper.registerBuiltinResourcePack(
+                new ResourceLocation(Paintable.MOD_ID, packId),
+                modContainer,
+                "Paintable Supplementaries Compat",
+                ResourcePackActivationType.ALWAYS_ENABLED
+        );
+    }
+
     public static void loadBuiltinResourcePacks() {
         Optional<ModContainer> modContainer = FabricLoader.getInstance().getModContainer(Paintable.MOD_ID);
         if (modContainer.isPresent()) {
             if (FabricLoader.getInstance().isModLoaded("dye_depot")) {
-                registerBuiltinDataPack(modContainer.get(), "paintable_dye_depot_compat");
+                registerBuiltinDyeDepotDataPack(modContainer.get(), "paintable_dye_depot_compat");
+            }
+            if (FabricLoader.getInstance().isModLoaded("supplementaries")) {
+                registerBuiltinSupplementariesDataPack(modContainer.get(), "paintable_supplementaries_compat");
             }
         }
     }
