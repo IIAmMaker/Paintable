@@ -1,6 +1,8 @@
 package net.im_maker.paintable;
 
 import com.ninni.dye_depot.registry.DDDyes;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -11,7 +13,7 @@ import net.im_maker.paintable.common.entity.PEntities;
 import net.im_maker.paintable.common.item.PItems;
 import net.im_maker.paintable.common.util.DataPackRegistrar;
 import net.im_maker.paintable.common.util.crafting.PRecipeSerializers;
-import net.im_maker.paintable.config.PaintableServerConfigs;
+import net.im_maker.paintable.config.PaintableConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
@@ -32,7 +34,6 @@ public class Paintable implements ModInitializer {
     public static final String MOD_ID = "paintable";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     private static final Function<ItemLike, ItemStack> FUNCTION = ItemStack::new;
-    public static PaintableServerConfigs CONFIG;
     public static List<DyeColor> customColorOrder = new ArrayList<>(Arrays.asList(
             DyeColor.WHITE, DyeColor.LIGHT_GRAY, DyeColor.GRAY, DyeColor.BLACK,
             DyeColor.BROWN, DyeColor.RED, DyeColor.ORANGE, DyeColor.YELLOW,
@@ -48,7 +49,7 @@ public class Paintable implements ModInitializer {
     public void onInitialize() {
         isDyeDepotLoaded(FabricLoader.getInstance().isModLoaded("dye_depot"));
         DataPackRegistrar.loadBuiltinResourcePacks();
-        CONFIG = PaintableServerConfigs.getInstance();
+        AutoConfig.register(PaintableConfig.class, GsonConfigSerializer::new);
         PItems.registerItems();
         PBlocks.registerBlocks();
         PBlockEntities.registerBlockEntities();
