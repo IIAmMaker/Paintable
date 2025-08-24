@@ -1,21 +1,20 @@
 {
   "values": [
-    "waxed:wax_pillar",
-    "waxed:white_wax_pillar",
-    "waxed:orange_wax_pillar",
-    "waxed:magenta_wax_pillar",
-    "waxed:light_blue_wax_pillar",
-    "waxed:yellow_wax_pillar",
-    "waxed:lime_wax_pillar",
-    "waxed:pink_wax_pillar",
-    "waxed:gray_wax_pillar",
-    "waxed:light_gray_wax_pillar",
-    "waxed:cyan_wax_pillar",
-    "waxed:purple_wax_pillar",
-    "waxed:blue_wax_pillar",
-    "waxed:brown_wax_pillar",
-    "waxed:green_wax_pillar",
-    "waxed:red_wax_pillar",
-    "waxed:black_wax_pillar"
+    "waxed:maroon_wax_pillar",
+    "waxed:rose_wax_pillar",
+    "waxed:coral_wax_pillar",
+    "waxed:indigo_wax_pillar",
+    "waxed:navy_wax_pillar",
+    "waxed:slate_wax_pillar",
+    "waxed:olive_wax_pillar",
+    "waxed:amber_wax_pillar",
+    "waxed:beige_wax_pillar",
+    "waxed:teal_wax_pillar",
+    "waxed:mint_wax_pillar",
+    "waxed:aqua_wax_pillar",
+    "waxed:verdant_wax_pillar",
+    "waxed:forest_wax_pillar",
+    "waxed:ginger_wax_pillar",
+    "waxed:tan_wax_pillar"
   ]
 }
