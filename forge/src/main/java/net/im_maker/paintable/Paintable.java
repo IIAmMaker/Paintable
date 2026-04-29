@@ -262,10 +262,22 @@ public class Paintable {
                 }
             }
         }
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+            for (DyeColor color : customColorOrderR) {
+                String colorName = color.getName();
+                ResourceLocation blockLocation = new ResourceLocation("paintable:" + colorName + "_pnt");
+                Block block = ForgeRegistries.BLOCKS.getValue(blockLocation);
+                addAfter(entries, Blocks.TNT, block);
+            }
+        }
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(PEntities.PNT.get(), PntRenderer::new);
+        }
         @SubscribeEvent
         public static void registerLayer (EntityRenderersEvent.RegisterLayerDefinitions event) {
         }

@@ -2,6 +2,7 @@ package net.im_maker.paintable.datagen;
 
 import com.ninni.dye_depot.registry.DDDyes;
 import net.im_maker.paintable.Paintable;
+import net.im_maker.paintable.common.block.ModBlocks;
 import net.im_maker.paintable.common.util.PTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -205,6 +206,13 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
             this.tag(BlockTags.MINEABLE_WITH_AXE).add(block2, blockW2);
         }
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(blockN("paint_bucket"));
+
+        for (DyeColor color : colors) {
+            Block block = blockN(color + "_pnt");
+            this.tag(BlockTags.ENDERMAN_HOLDABLE).add(block);
+        }
+
+        this.tag(BlockTags.ENDERMAN_HOLDABLE).add(ModBlocks.PNT.get());
 
         this.tag(PTags.Blocks.PAINT_BRUSH_WASHING_BLOCKS).add(
                 Blocks.WET_SPONGE,

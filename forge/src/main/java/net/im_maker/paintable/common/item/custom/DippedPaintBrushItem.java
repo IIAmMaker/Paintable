@@ -51,7 +51,7 @@ public class DippedPaintBrushItem extends Item {
     }
 
     private int getPaintMax() {
-        return PaintableConfig.PAINT_LIMIT.get(); // safe now, called at runtime
+        return PaintableConfig.PAINT_LIMIT.get();
     }
 
     private void ensurePaintInitialized(ItemStack stack) {
@@ -190,6 +190,8 @@ public class DippedPaintBrushItem extends Item {
             cleanPaintBrush(world, blockPos, context);
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
+        System.out.println(blockID);
+        System.out.println(blockState.getBlock().asItem());
 
         for (TagKey<Block> tag : blockState.getTags().toList()) {
             ResourceLocation tagLocation = tag.location();
@@ -202,7 +204,6 @@ public class DippedPaintBrushItem extends Item {
                     prefix = parts[0].replace("paintable/", "");
                     blockName = parts[1].replace("paintable/", "");
                 } else if (path.endsWith("_")) {
-                    // ex "mod99:stone_yellow" -> "stone"
                     String base = path.replace("paintable/", "");
                     int lastUnderscore = base.lastIndexOf("_");
                     if (lastUnderscore != -1) {
@@ -221,6 +222,7 @@ public class DippedPaintBrushItem extends Item {
                 TagKey<Block> blockTag = TagKey.create(Registries.BLOCK, tagLocation);
 
                 List<Block> blocks = BuiltInRegistries.BLOCK.getTag(blockTag).stream().flatMap(holder -> holder.stream()).map(Holder::value).toList();
+                System.out.println(blockName);
 
                 boolean foundPaintable = false;
                 for (Block b : blocks) {
@@ -228,7 +230,6 @@ public class DippedPaintBrushItem extends Item {
                     if (id != null && id.getPath().contains("magenta")) {
                         nameSpace = id.getNamespace();
                         Block blockTest = BuiltInRegistries.BLOCK.get(new ResourceLocation(nameSpace, prefix + color + blockName));
-                        //System.out.println(blockTest);
 
                         if (blockTest != Blocks.AIR) {
                             foundPaintable = true;
@@ -252,7 +253,6 @@ public class DippedPaintBrushItem extends Item {
         }
 
         Map<TagKey<Block>, String> tagMap = new HashMap<>();
-        // (your tagMap entries commented out - keep them if you want)
 
         for (Map.Entry<TagKey<Block>, String> entry : tagMap.entrySet()) {
             if (blockState.is(entry.getKey())) {

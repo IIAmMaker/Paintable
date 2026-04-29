@@ -19,7 +19,7 @@ public abstract class ModelLoaderMixin {
     @Shadow
     protected abstract void loadTopLevel(ModelResourceLocation location);
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadTopLevel(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", ordinal = 3, shift = At.Shift.AFTER), remap = false)
+    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/resources/model/ModelBakery;loadTopLevel(Lnet/minecraft/client/resources/model/ModelResourceLocation;)V", ordinal = 3, shift = At.Shift.AFTER))
     public void addStuff(BlockColors blockColors, ProfilerFiller profilerFiller, Map modelResources, Map blockStateResources, CallbackInfo ci) {
         this.loadTopLevel(new ModelResourceLocation(Paintable.MOD_ID, "paint_brush_in_hand", "inventory"));
         for (DyeColor color : DyeColor.values()) {

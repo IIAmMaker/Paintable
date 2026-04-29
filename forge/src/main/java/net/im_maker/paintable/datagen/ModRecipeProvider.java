@@ -180,6 +180,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .define('P', ModBlocks.PAINT_BUCKET.get())
                     .unlockedBy(getHasName(ModBlocks.PAINT_BUCKET.get()), has(ModBlocks.PAINT_BUCKET.get()))
                     .save(pWriter);
+
+            ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Paintable.getItemFromString(Paintable.MOD_ID, color + "_pnt"))
+                    .pattern(" S ")
+                    .pattern("GPG")
+                    .pattern(" S ")
+                    .define('S', Tags.Items.SAND)
+                    .define('G', Items.GUNPOWDER)
+                    .define('P', Paintable.getItemFromString(Paintable.MOD_ID, color + "_paint_bucket"))
+                    .unlockedBy(getHasName(Paintable.getItemFromString(Paintable.MOD_ID, color + "_paint_bucket")), has(Paintable.getItemFromString(Paintable.MOD_ID, color + "_paint_bucket")))
+                    .save(pWriter);
+
             paintBrushRecipe(pWriter, color, planks, ItemTags.PLANKS);
             paintBrushRecipe(pWriter, color, stairs, ItemTags.WOODEN_STAIRS);
             paintBrushRecipe(pWriter, color, slab, ItemTags.WOODEN_SLABS);
@@ -209,6 +220,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STICK)
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.PNT.get())
+                .pattern(" S ")
+                .pattern("GPG")
+                .pattern(" S ")
+                .define('S', Tags.Items.SAND)
+                .define('G', Items.GUNPOWDER)
+                .define('P', ModBlocks.PAINT_BUCKET.get())
+                .unlockedBy(getHasName(ModBlocks.PAINT_BUCKET.get()), has(ModBlocks.PAINT_BUCKET.get()))
+                .save(pWriter);
+
         //ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.PAINT_BRUSH.get())
         //        .requires(PTags.Items.DIPPED_PAINT_BRUSH)
         //        .unlockedBy(getHasName(ModItems.PAINT_BRUSH.get()), has(ModItems.PAINT_BRUSH.get()))

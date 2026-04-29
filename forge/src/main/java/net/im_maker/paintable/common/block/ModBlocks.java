@@ -33,8 +33,10 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, Paintable.MOD_ID);
     //Paint Bucket
     public static final RegistryObject<Block> PAINT_BUCKET = registryBlock("paint_bucket", () -> new PaintBucketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.1F, 3.0F).sound(SoundType.LANTERN)));
+    public static final RegistryObject<Block> PNT = registryBlock("pnt", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instabreak().sound(SoundType.GRASS).ignitedByLava().isRedstoneConductor(ModBlocks::never)));
 
-    public static final List<RegistryObject<Block>> FILLED_PAINT_BUCKET = registerColoredBucketBlocks("paint_bucket");
+    public static final List<RegistryObject<Block>> PNTS = registerColoredPNTBlocks("pnt");
+    public static final List<RegistryObject<Block>> FILLED_PAINT_BUCKETS = registerColoredBucketBlocks("paint_bucket");
     public static final List<RegistryObject<Block>> PAINTED_LOGS = registerStrippableColoredLogs("painted_log");
     public static final List<RegistryObject<Block>> PAINTED_WOODS = registerStrippableColoredLogs("painted_wood");
     public static final List<RegistryObject<Block>> PAINTED_STRIPPED_LOGS = registerColoredLogs("painted_log");
@@ -66,6 +68,17 @@ public class ModBlocks {
         for (DyeColor color : DyeColor.values()) {
             String blockId = color.getName() + "_" + blockName;
             RegistryObject<T> block = (RegistryObject<T>) BLOCKS.register(blockId, () -> new FilledPaintBucketBlock(BlockBehaviour.Properties.of().mapColor(color.getMapColor()).strength(0.1F, 4.0F).sound(SoundType.LANTERN)));
+            registerBlockItem(blockId, block);
+            coloredBlocks.add(block);
+        }
+        return coloredBlocks;
+    }
+
+    private static <T extends Block> List<RegistryObject<T>> registerColoredPNTBlocks(String blockName) {
+        List<RegistryObject<T>> coloredBlocks = new ArrayList<>();
+        for (DyeColor color : DyeColor.values()) {
+            String blockId = color.getName() + "_" + blockName;
+            RegistryObject<T> block = (RegistryObject<T>) BLOCKS.register(blockId, () -> new PntBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instabreak().sound(SoundType.GRASS).ignitedByLava().isRedstoneConductor(ModBlocks::never), color));
             registerBlockItem(blockId, block);
             coloredBlocks.add(block);
         }
@@ -300,8 +313,12 @@ public class ModBlocks {
         return new ButtonBlock(blockbehaviour$properties, pSetType, 30, true);
     }
 
-    private static Boolean never(BlockState p_50779_, BlockGetter p_50780_, BlockPos p_50781_, EntityType<?> p_50782_) {
-        return (boolean)false;
+    private static boolean never(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
+        return false;
+    }
+
+    private static Boolean never(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, EntityType<?> entityType) {
+        return false;
     }
 
     public static void register(IEventBus eventBus) {

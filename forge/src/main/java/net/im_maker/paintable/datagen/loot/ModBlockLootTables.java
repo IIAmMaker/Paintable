@@ -86,6 +86,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             this.add(block(color + "_paint_bucket"), (block) -> {
                 return this.createFilledPaintBucketItemTable(block);
             });
+            this.dropSelf(block(color + "_pnt"));
+            this.dropSelf(ModBlocks.PNT.get());
         }
     }
 

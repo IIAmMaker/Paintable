@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-09T20:16:11.6607154	Tags for minecraft:block mod id paintable
+// 1.20.1	2025-08-27T20:44:45.5425121	Tags for minecraft:block mod id paintable
 598f7e3a3a9ce47e8963dd423e41254c61d28a50 data/forge/tags/blocks/fences.json
 598f7e3a3a9ce47e8963dd423e41254c61d28a50 data/forge/tags/blocks/fences/wooden.json
 5d5fe2b9834cb5b61c748327f04795f787375dad data/forge/tags/blocks/fence_gates.json
@@ -9,6 +9,7 @@
 76c54e9d9b849c9e011a5e6c20ae3935ec2bc4c0 data/minecraft/tags/blocks/ceiling_hanging_signs.json
 abf0b7c010ac55d95a4d8b9e44d8320640d68015 data/minecraft/tags/blocks/completes_find_tree_tutorial.json
 33c65b58e8b52cb0351e885901aa0b43b80c6ca2 data/minecraft/tags/blocks/doors.json
+116e4e6d6a9586235d2f2730d70e1b7ad3fb77e4 data/minecraft/tags/blocks/enderman_holdable.json
 598f7e3a3a9ce47e8963dd423e41254c61d28a50 data/minecraft/tags/blocks/fences.json
 5d5fe2b9834cb5b61c748327f04795f787375dad data/minecraft/tags/blocks/fence_gates.json
 abf0b7c010ac55d95a4d8b9e44d8320640d68015 data/minecraft/tags/blocks/lava_pool_stone_cannot_replace.json

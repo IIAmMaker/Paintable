@@ -12,7 +12,6 @@ import net.im_maker.paintable.common.block.entity.PBlockEntities;
 import net.im_maker.paintable.common.entity.PEntities;
 import net.im_maker.paintable.common.item.PItems;
 import net.im_maker.paintable.common.util.DataPackRegistrar;
-import net.im_maker.paintable.common.util.crafting.PRecipeSerializers;
 import net.im_maker.paintable.config.PaintableConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -54,7 +53,6 @@ public class Paintable implements ModInitializer {
         PBlocks.registerBlocks();
         PBlockEntities.registerBlockEntities();
         PEntities.registerEntities();
-        PRecipeSerializers.init();
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(Paintable::addToBuildingBlocksTap);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(Paintable::addToColoredBlocksTap);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(Paintable::addToFunctionalBlocksTap);

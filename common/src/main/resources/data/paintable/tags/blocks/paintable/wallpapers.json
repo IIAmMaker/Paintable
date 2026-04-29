@@ -1,21 +1,20 @@
 {
   "values": [
-    "waxed:wax_block",
-    "waxed:white_wax_block",
-    "waxed:orange_wax_block",
-    "waxed:magenta_wax_block",
-    "waxed:light_blue_wax_block",
-    "waxed:yellow_wax_block",
-    "waxed:lime_wax_block",
-    "waxed:pink_wax_block",
-    "waxed:gray_wax_block",
-    "waxed:light_gray_wax_block",
-    "waxed:cyan_wax_block",
-    "waxed:purple_wax_block",
-    "waxed:blue_wax_block",
-    "waxed:brown_wax_block",
-    "waxed:green_wax_block",
-    "waxed:red_wax_block",
-    "waxed:black_wax_block"
+    "wallpapers:white_wallpaper_block",
+    "wallpapers:orange_wallpaper_block",
+    "wallpapers:magenta_wallpaper_block",
+    "wallpapers:light_blue_wallpaper_block",
+    "wallpapers:yellow_wallpaper_block",
+    "wallpapers:lime_wallpaper_block",
+    "wallpapers:pink_wallpaper_block",
+    "wallpapers:gray_wallpaper_block",
+    "wallpapers:light_gray_wallpaper_block",
+    "wallpapers:cyan_wallpaper_block",
+    "wallpapers:purple_wallpaper_block",
+    "wallpapers:blue_wallpaper_block",
+    "wallpapers:brown_wallpaper_block",
+    "wallpapers:green_wallpaper_block",
+    "wallpapers:red_wallpaper_block",
+    "wallpapers:black_wallpaper_block"
   ]
 }

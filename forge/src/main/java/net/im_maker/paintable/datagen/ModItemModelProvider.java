@@ -1,6 +1,7 @@
 package net.im_maker.paintable.datagen;
 
 import net.im_maker.paintable.Paintable;
+import net.im_maker.paintable.common.block.ModBlocks;
 import net.im_maker.paintable.common.item.PItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -47,6 +48,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         //handheldItem(PItems.PAINT_BRUSH);
         simpleBlockItem(block("paint_bucket"));
+        evenSimplerBlockItem(block("pnt"));
         for (DyeColor color : DyeColor.values()) {
             //ResourceLocation paint_brushLocation = new ResourceLocation(Paintable.MOD_ID, color + "_paint_brush");
             //RegistryObject<Item> paint_brush = RegistryObject.create(paint_brushLocation, ForgeRegistries.ITEMS);
@@ -77,10 +79,9 @@ public class ModItemModelProvider extends ItemModelProvider {
             evenSimplerBlockItem(block(color, "mud_brick_slab"));
             wallItem(block(color, "mud_brick_wall"), block(color, "mud_bricks"));
             simpleBlockItem(block(color + "_paint_bucket"));
+            evenSimplerBlockItem(block(color + "_pnt"));
         }
     }
-
-
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

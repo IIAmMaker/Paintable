@@ -25,10 +25,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         super(output, Paintable.MOD_ID, exFileHelper);
     }
 
+    private Block blockN (DyeColor color, String block) {
+        ResourceLocation blockLocation = new ResourceLocation(Paintable.MOD_ID, color + "_" + block);
+        return ForgeRegistries.BLOCKS.getValue(blockLocation);
+    }
+
     private Block block (DyeColor color, String block) {
         ResourceLocation blockLocation = new ResourceLocation(Paintable.MOD_ID, color + "_painted_" + block);
         return ForgeRegistries.BLOCKS.getValue(blockLocation);
     }
+
     private ResourceLocation blockR (DyeColor color, String block) {
         return new ResourceLocation(Paintable.MOD_ID, "block/" + color + "_painted_" + block);
     }
@@ -108,6 +114,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .partialState().with(PaintBucketBlock.FACING, Direction.WEST).setModels(wModel);
     }
 
+    public void pntBlock(Block block) {
+        pntBlock(block, extend(blockTexture(block), "_side"), extend(blockTexture(ModBlocks.PNT.get()), "_bottom"), extend(blockTexture(block), "_top"));
+    }
+
+    public void pntBlock(Block block, ResourceLocation side, ResourceLocation bottom, ResourceLocation top) {
+        pntBlock(block, models().cubeBottomTop(name(block), side, bottom, top));
+    }
+
+    public void pntBlock(Block block, ModelFile model) {
+        getVariantBuilder(block).partialState()
+                .modelForState().modelFile(model).addModel();
+    }
+
+    private ResourceLocation extend(ResourceLocation rl, String suffix) {
+        return new ResourceLocation(rl.getNamespace(), rl.getPath() + suffix);
+    }
+
     @Override
     protected void registerStatesAndModels() {
         for (DyeColor color : DyeColor.values()) {
@@ -135,7 +158,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
             filledPaintBucketBlock(Paintable.getBlockFromString(color + "_paint_bucket"), color + "_paint_bucket");
             signBlock((StandingSignBlock) block(color, "sign"), (WallSignBlock) block(color, "wall_sign"), blockTexture(block(color, "planks")));
             hangingSignBlock(ModBlocks.PAINTED_HANGING_SIGN.get(color.getId()).get(), ModBlocks.PAINTED_WALL_HANGING_SIGN.get(color.getId()).get(), blockTexture(blockOSSS(color, "log")));
+            pntBlock(blockN(color, "pnt"));
         }
+        pntBlock(ModBlocks.PNT.get());
         paintBucketBlock(Paintable.getBlockFromString("paint_bucket"), "paint_bucket");
     }
 
