@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "paintable:block/pnt_bottom",
+    "side": "paintable:block/amber_pnt_side",
+    "top": "paintable:block/amber_pnt_top"
+  }
+}

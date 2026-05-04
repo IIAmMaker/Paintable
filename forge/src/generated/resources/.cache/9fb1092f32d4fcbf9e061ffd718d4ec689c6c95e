@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-27T20:44:45.5225993	Recipes
+// 1.20.1	2026-05-01T17:16:19.0609752	Recipes
 28884bb2e6d19555d0d021990bd62d88a7247646 data/minecraft/advancements/recipes/building_blocks/amber_painted_boat_from_paint_brush.json
 fd3dddb6bb0973d62c18bd584f64fe4b9ffd8a72 data/minecraft/advancements/recipes/building_blocks/amber_painted_brick_slab_from_amber_painted_bricks_stonecutting.json
 31d58d252fcfa36384679af3a25b209210747665 data/minecraft/advancements/recipes/building_blocks/amber_painted_brick_stairs_from_amber_painted_bricks_stonecutting.json
@@ -1754,7 +1754,6 @@ a27809c9f8fdaf5e582f2cbd430a710858f1c44d data/paintable/advancements/recipes/too
 93d70e61bd9a3a8dce0fbd1cc06d1e5ee88663b9 data/paintable/advancements/recipes/tools/orange_pnt.json
 a3c473ce4d6717ab2852ba9095e4abe6a1219b0b data/paintable/advancements/recipes/tools/paint_brush.json
 9200b0bb11d9cbac1284d7f638efafd660c4d1c4 data/paintable/advancements/recipes/tools/pink_pnt.json
-854581da1a8e1cd40bdba79331bf4041f1a29dea data/paintable/advancements/recipes/tools/pnt.json
 2b695c916fff06e3f1926eaf5d9bdc41dacb932d data/paintable/advancements/recipes/tools/purple_pnt.json
 458433bd53a96b72b786e79163f8cd0a640b38e5 data/paintable/advancements/recipes/tools/red_pnt.json
 2af21fe3084bf64c219e8eb1c05b4e0f6eaaa10b data/paintable/advancements/recipes/tools/rose_pnt.json
@@ -2336,7 +2335,6 @@ bb8d5d2cee5209dc12fbbb2d5a5cb396f2497ad3 data/paintable/recipes/pink_painted_sta
 94329b9cfb326d30e041e3b7046fed2058bf47c9 data/paintable/recipes/pink_painted_wood.json
 2024689c23ec38158f9260729844310563406fea data/paintable/recipes/pink_paint_bucket.json
 543f744db13658f121c46553b19c415ee46b32fd data/paintable/recipes/pink_pnt.json
-5d7c65caec7485945687cec0039d687bd653482f data/paintable/recipes/pnt.json
 4f6e50ef234add72314f934aa17c2f30dac81e94 data/paintable/recipes/purple_painted_boat.json
 c17ce1cab1a3ddc966d76fa77ee555354d0e3173 data/paintable/recipes/purple_painted_brick_slab.json
 380e261fa08e5ee14619dbfa4dc7842a312bdc67 data/paintable/recipes/purple_painted_brick_stairs.json

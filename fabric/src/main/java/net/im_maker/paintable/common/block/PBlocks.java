@@ -30,6 +30,7 @@ public class PBlocks {
     public static final Block PAINT_BUCKET = registryBlock("paint_bucket", new PaintBucketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.1F, 3.0F).sound(SoundType.LANTERN)));
 
     public static final List<Block> FILLED_PAINT_BUCKET = registerColoredBucketBlocks("paint_bucket");
+    public static final List<Block> PNTS = registerColoredPNTBlocks("pnt");
     public static final List<Block> PAINTED_LOGS = registerStrippableColoredLogs("painted_log");
     public static final List<Block> PAINTED_WOODS = registerStrippableColoredLogs("painted_wood");
     public static final List<Block> PAINTED_STRIPPED_LOGS = registerColoredLogs("painted_log");
@@ -61,6 +62,16 @@ public class PBlocks {
         for (DyeColor color : DyeColor.values()) {
             String blockId = color.getName() + "_" + blockName;
             Block block = registryBlock(blockId, new FilledPaintBucketBlock(BlockBehaviour.Properties.of().mapColor(color.getMapColor()).strength(0.1F, 4.0F).sound(SoundType.LANTERN)));
+            coloredBlocks.add(block);
+        }
+        return coloredBlocks;
+    }
+
+    private static List<Block> registerColoredPNTBlocks(String blockName) {
+        List<Block> coloredBlocks = new ArrayList<>();
+        for (DyeColor color : DyeColor.values()) {
+            String blockId = color.getName() + "_" + blockName;
+            Block block = registryBlock(blockId, new PntBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instabreak().sound(SoundType.GRASS).ignitedByLava().isRedstoneConductor(PBlocks::never), color));
             coloredBlocks.add(block);
         }
         return coloredBlocks;
@@ -289,5 +300,9 @@ public class PBlocks {
 
     public static void  registerBlocks() {
         Paintable.LOGGER.info("Registering Mod Blocks for " + Paintable.MOD_ID);
+    }
+
+    private static boolean never(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) {
+        return false;
     }
 }

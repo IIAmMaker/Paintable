@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "paintable:maroon_painted_mud_bricks"
-  },
-  "result": "paintable:maroon_painted_mud_brick_stairs"
-}

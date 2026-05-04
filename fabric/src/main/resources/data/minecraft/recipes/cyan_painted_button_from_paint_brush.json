@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:cyan_paint_brush"
+    },
+    {
+      "tag": "minecraft:wooden_buttons"
+    }
+  ],
+  "result": {
+    "item": "paintable:cyan_painted_button"
+  }
+}

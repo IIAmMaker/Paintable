@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:black_paint_brush"
+    },
+    {
+      "tag": "minecraft:hanging_signs"
+    }
+  ],
+  "result": {
+    "item": "paintable:black_painted_hanging_sign"
+  }
+}

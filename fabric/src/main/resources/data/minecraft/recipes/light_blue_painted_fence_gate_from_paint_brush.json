@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:light_blue_paint_brush"
+    },
+    {
+      "tag": "forge:fence_gates/wooden"
+    }
+  ],
+  "result": {
+    "item": "paintable:light_blue_painted_fence_gate"
+  }
+}

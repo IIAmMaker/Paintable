@@ -502,5 +502,6 @@
   "block.paintable.verdant_pnt": "Verdant PNT",
   "block.paintable.white_pnt": "White PNT",
   "block.paintable.yellow_pnt": "Yellow PNT",
-  "block.paintable.pnt": "PNT"
+  "block.paintable.pnt": "PNT",
+  "tooltip.paintable.paint_left": "Paint left"
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "paintable:block/maroon_painted_bricks",
-    "side": "paintable:block/maroon_painted_bricks",
-    "top": "paintable:block/maroon_painted_bricks"
-  }
-}

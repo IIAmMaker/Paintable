@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:yellow_paint_brush"
+    },
+    {
+      "tag": "minecraft:wooden_fences"
+    }
+  ],
+  "result": {
+    "item": "paintable:yellow_painted_fence"
+  }
+}

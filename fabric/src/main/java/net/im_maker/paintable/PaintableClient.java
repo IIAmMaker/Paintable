@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.im_maker.paintable.client.PntRenderer;
 import net.im_maker.paintable.common.block.PBlocks;
 import net.im_maker.paintable.common.block.entity.PBlockEntities;
 import net.im_maker.paintable.common.entity.PEntities;
@@ -33,8 +34,11 @@ public class PaintableClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(PEntities.BOAT, pContext -> new PBoatRenderer(pContext, false));
         EntityRendererRegistry.register(PEntities.CHEST_BOAT, pContext -> new PBoatRenderer(pContext, true));
+        EntityRendererRegistry.register(PEntities.PNT, PntRenderer::new);
 
         BlockEntityRenderers.register(PBlockEntities.SIGN, SignRenderer::new);
         BlockEntityRenderers.register(PBlockEntities.HANGING_SIGN, HangingSignRenderer::new);
+
+
     }
 }

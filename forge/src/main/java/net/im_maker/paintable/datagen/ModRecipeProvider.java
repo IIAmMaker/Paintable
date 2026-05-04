@@ -221,15 +221,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.PNT.get())
-                .pattern(" S ")
-                .pattern("GPG")
-                .pattern(" S ")
-                .define('S', Tags.Items.SAND)
-                .define('G', Items.GUNPOWDER)
-                .define('P', ModBlocks.PAINT_BUCKET.get())
-                .unlockedBy(getHasName(ModBlocks.PAINT_BUCKET.get()), has(ModBlocks.PAINT_BUCKET.get()))
-                .save(pWriter);
+        //ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModBlocks.PNT.get())
+        //        .pattern(" S ")
+        //        .pattern("GPG")
+        //        .pattern(" S ")
+        //        .define('S', Tags.Items.SAND)
+        //        .define('G', Items.GUNPOWDER)
+        //        .define('P', ModBlocks.PAINT_BUCKET.get())
+        //        .unlockedBy(getHasName(ModBlocks.PAINT_BUCKET.get()), has(ModBlocks.PAINT_BUCKET.get()))
+        //        .save(pWriter);
 
         //ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.PAINT_BRUSH.get())
         //        .requires(PTags.Items.DIPPED_PAINT_BRUSH)

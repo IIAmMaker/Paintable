@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:tan_paint_brush"
+    },
+    {
+      "tag": "minecraft:wooden_pressure_plates"
+    }
+  ],
+  "result": {
+    "item": "paintable:tan_painted_pressure_plate"
+  }
+}

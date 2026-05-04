@@ -35,8 +35,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> PAINT_BUCKET = registryBlock("paint_bucket", () -> new PaintBucketBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.1F, 3.0F).sound(SoundType.LANTERN)));
     public static final RegistryObject<Block> PNT = registryBlock("pnt", () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).instabreak().sound(SoundType.GRASS).ignitedByLava().isRedstoneConductor(ModBlocks::never)));
 
-    public static final List<RegistryObject<Block>> PNTS = registerColoredPNTBlocks("pnt");
     public static final List<RegistryObject<Block>> FILLED_PAINT_BUCKETS = registerColoredBucketBlocks("paint_bucket");
+    public static final List<RegistryObject<Block>> PNTS = registerColoredPNTBlocks("pnt");
     public static final List<RegistryObject<Block>> PAINTED_LOGS = registerStrippableColoredLogs("painted_log");
     public static final List<RegistryObject<Block>> PAINTED_WOODS = registerStrippableColoredLogs("painted_wood");
     public static final List<RegistryObject<Block>> PAINTED_STRIPPED_LOGS = registerColoredLogs("painted_log");

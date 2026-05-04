@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:beige_paint_brush"
+    },
+    {
+      "tag": "minecraft:wooden_stairs"
+    }
+  ],
+  "result": {
+    "item": "paintable:beige_painted_stairs"
+  }
+}

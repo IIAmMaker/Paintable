@@ -965,5 +965,5 @@
   "item.paintable.yellow_painted_boat": "Yellow Painted Boat",
   "item.paintable.yellow_painted_chest_boat": "Yellow Painted Chest Boat",
   "subtitles.item.paint_brush.dipping": "Dipping",
-  "subtitles.item.paint_brush.paint": "Painting"
-}
+  "subtitles.item.paint_brush.paint": "Painting",
+  "tooltip.paintable.paint_left": "Paint left: %s/%s"}

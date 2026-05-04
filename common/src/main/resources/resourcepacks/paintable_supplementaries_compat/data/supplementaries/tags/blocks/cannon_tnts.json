@@ -1,0 +1,20 @@
+{
+  "values": [
+    "paintable:white_pnt",
+    "paintable:orange_pnt",
+    "paintable:magenta_pnt",
+    "paintable:light_blue_pnt",
+    "paintable:yellow_pnt",
+    "paintable:lime_pnt",
+    "paintable:pink_pnt",
+    "paintable:gray_pnt",
+    "paintable:light_gray_pnt",
+    "paintable:cyan_pnt",
+    "paintable:purple_pnt",
+    "paintable:blue_pnt",
+    "paintable:brown_pnt",
+    "paintable:green_pnt",
+    "paintable:red_pnt",
+    "paintable:black_pnt"
+  ]
+}

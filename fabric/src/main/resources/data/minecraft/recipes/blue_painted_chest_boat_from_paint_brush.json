@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "paintable:blue_paint_brush"
+    },
+    {
+      "tag": "minecraft:chest_boats"
+    }
+  ],
+  "result": {
+    "item": "paintable:blue_painted_chest_boat"
+  }
+}

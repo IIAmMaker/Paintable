@@ -3,10 +3,13 @@ package net.im_maker.paintable;
 import com.ninni.dye_depot.registry.DDDyes;
 import net.im_maker.paintable.client.PntRenderer;
 import net.im_maker.paintable.common.block.ModBlocks;
+import net.im_maker.paintable.common.block.custom.PntBlock;
 import net.im_maker.paintable.common.block.entity.ModBlockEntities;
 import net.im_maker.paintable.common.entity.PEntities;
 import net.im_maker.paintable.client.ModBoatRenderer;
+import net.im_maker.paintable.common.entity.custom.PrimedPnt;
 import net.im_maker.paintable.common.item.PItems;
+import net.im_maker.paintable.common.item.custom.DippedPaintBrushItem;
 import net.im_maker.paintable.common.sound.PaintableSounds;
 import net.im_maker.paintable.common.util.PaintableWoodTypes;
 import net.im_maker.paintable.config.PaintableConfig;
@@ -17,14 +20,35 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.Direction;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.DirectionalPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.common.util.MutableHashedLinkedMap;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -34,6 +58,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -197,7 +222,6 @@ public class Paintable {
                 addAfter(entries, ModBlocks.PAINT_BUCKET.get(), block);
             }
         }
-
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             addAfter(entries, Items.BRUSH, PItems.PAINT_BRUSH.get());
             for (DyeColor color : customColorOrderR) {
@@ -274,13 +298,35 @@ public class Paintable {
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+
         @SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(PEntities.PNT.get(), PntRenderer::new);
         }
+
         @SubscribeEvent
         public static void registerLayer (EntityRenderersEvent.RegisterLayerDefinitions event) {
         }
+
+        @SubscribeEvent
+        public static void setUp (FMLCommonSetupEvent event) {
+            for (DyeColor color : DyeColor.values()) {
+                Block block = getBlockFromString(color + "_pnt");
+                DispenserBlock.registerBehavior(block, new DefaultDispenseItemBehavior() {
+                    protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+                        Level level = blockSource.getLevel();
+                        BlockPos blockpos = blockSource.getPos().relative(blockSource.getBlockState().getValue(DispenserBlock.FACING));
+                        PrimedPnt primedpnt = new PrimedPnt(level, blockpos.getX() + 0.5D, blockpos.getY(), blockpos.getZ() + 0.5D, (LivingEntity)null, color);
+                        level.addFreshEntity(primedpnt);
+                        level.playSound((Player)null, primedpnt.getX(), primedpnt.getY(), primedpnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        level.gameEvent((Entity)null, GameEvent.ENTITY_PLACE, blockpos);
+                        itemStack.shrink(1);
+                        return itemStack;
+                    }
+                });
+            }
+        }
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(PEntities.BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));

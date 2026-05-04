@@ -53,7 +53,7 @@ public class DippedPaintBrushItem extends Item {
     }
 
     private int getPaintMax() {
-        return CONFIG.paintLimit; // safe now, called at runtime
+        return CONFIG.paintLimit;
     }
 
     private void ensurePaintInitialized(ItemStack stack) {
@@ -97,10 +97,10 @@ public class DippedPaintBrushItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> tooltips, TooltipFlag tooltipFlag) {
         int current = getPaintLeft(itemStack);
-        tooltips.add(
-                Component.literal("Paint Left: " + current + "/" + getPaintMax())
-                        .withStyle(Style.EMPTY.withColor(color.getMapColor().col))
-        );
+        if (current < getPaintMax()) {
+            tooltips.add(Component.translatable("tooltip.paintable.paint_left", current, getPaintMax())
+                    .withStyle(Style.EMPTY.withColor(color.getMapColor().col)));
+        }
         super.appendHoverText(itemStack, level, tooltips, tooltipFlag);
     }
 

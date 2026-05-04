@@ -10,15 +10,27 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.im_maker.paintable.common.block.PBlocks;
 import net.im_maker.paintable.common.block.entity.PBlockEntities;
 import net.im_maker.paintable.common.entity.PEntities;
+import net.im_maker.paintable.common.entity.custom.PrimedPnt;
 import net.im_maker.paintable.common.item.PItems;
 import net.im_maker.paintable.common.util.DataPackRegistrar;
 import net.im_maker.paintable.config.PaintableConfig;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DispenserBlock;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,6 +69,26 @@ public class Paintable implements ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COLORED_BLOCKS).register(Paintable::addToColoredBlocksTap);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(Paintable::addToFunctionalBlocksTap);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(Paintable::addToToolsAndUtilitiesTap);
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.REDSTONE_BLOCKS).register(Paintable::addToRedstoneBlocksTap);
+        dispenserBehavior();
+    }
+
+    public static void dispenserBehavior () {
+        for (DyeColor color : DyeColor.values()) {
+            Block block = getBlockFromString(color + "_pnt");
+            DispenserBlock.registerBehavior(block, new DefaultDispenseItemBehavior() {
+                protected ItemStack execute(BlockSource blockSource, ItemStack itemStack) {
+                    Level level = blockSource.getLevel();
+                    BlockPos blockpos = blockSource.getPos().relative(blockSource.getBlockState().getValue(DispenserBlock.FACING));
+                    PrimedPnt primedpnt = new PrimedPnt(level, blockpos.getX() + 0.5D, blockpos.getY(), blockpos.getZ() + 0.5D, (LivingEntity)null, color);
+                    level.addFreshEntity(primedpnt);
+                    level.playSound((Player)null, primedpnt.getX(), primedpnt.getY(), primedpnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.gameEvent((Entity)null, GameEvent.ENTITY_PLACE, blockpos);
+                    itemStack.shrink(1);
+                    return itemStack;
+                }
+            });
+        }
     }
 
     public static void isDyeDepotLoaded(Boolean b) {
@@ -100,7 +132,6 @@ public class Paintable implements ModInitializer {
                 "painted_mud_brick_slab",
         };
 
-        // Colored Blocks Tab
         for (DyeColor color : customColorOrderR) {
             String colorName = color.getName();
             for (String blockType : woodBlockTypes) {
@@ -138,7 +169,6 @@ public class Paintable implements ModInitializer {
         }
     }
 
-    // New method for Tools and Utilities Tab
     public static void addToToolsAndUtilitiesTap(FabricItemGroupEntries entries) {
         entries.addAfter(Items.BRUSH, PItems.PAINT_BRUSH);
         for (DyeColor color : customColorOrderR) {
@@ -159,7 +189,6 @@ public class Paintable implements ModInitializer {
         }
     }
 
-    // New method for Building Blocks Tab
     public static void addToBuildingBlocksTap(FabricItemGroupEntries entries) {
         String[] woodBlockTypes = {
                 "%s_painted_button",
@@ -218,7 +247,6 @@ public class Paintable implements ModInitializer {
         }
     }
 
-    // New method for Functional Blocks Tab
     public static void addToFunctionalBlocksTap(FabricItemGroupEntries entries) {
         entries.addAfter(Blocks.PINK_SHULKER_BOX, PBlocks.PAINT_BUCKET);
         for (DyeColor color : customColorOrderR) {
@@ -236,6 +264,15 @@ public class Paintable implements ModInitializer {
                 Item item = BuiltInRegistries.ITEM.get(itemLocation);
                 entries.addAfter(Items.WARPED_HANGING_SIGN, item);
             }
+        }
+    }
+
+    public static void addToRedstoneBlocksTap(FabricItemGroupEntries entries) {
+        for (DyeColor color : customColorOrderR) {
+            String colorName = color.getName();
+            ResourceLocation blockLocation = new ResourceLocation("paintable:" + colorName + "_pnt");
+            Block block = BuiltInRegistries.BLOCK.get(blockLocation);
+            entries.addAfter(Blocks.TNT, block);
         }
     }
 

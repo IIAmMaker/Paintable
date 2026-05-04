@@ -3,25 +3,22 @@ package net.im_maker.paintable.common.entity.custom;
 import net.im_maker.paintable.common.entity.PEntities;
 import net.im_maker.paintable.common.item.PItems;
 import net.im_maker.paintable.common.item.custom.DippedPaintBrushItem;
+import net.im_maker.paintable.config.PaintableConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.item.PrimedTnt;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -117,52 +114,28 @@ public class PrimedPnt extends PrimedTnt {
 
     @Override
     protected void explode() {
-        if (this.level().isClientSide) return; // server only
+        if (this.level().isClientSide) return;
 
-        final int RADIUS = 6;        // how far the paint reaches
-        final int RAY_COUNT = 1500;  // how many paint rays (more = denser coverage)
-
+        final int RADIUS = PaintableConfig.PNT_EXPLOSION_RADIUS.get();
+        final int RAY_COUNT = 1500;
         Vec3 origin = Vec3.atCenterOf(this.blockPosition());
         int PARTICLE_COUNT = 400;
-
         RandomSource rand = this.level().getRandom();
         Set<BlockPos> painted = new HashSet<>();
-
         ServerLevel serverLevel = (ServerLevel) this.level();
         ServerPlayer fakePlayer = FakePlayerFactory.getMinecraft(serverLevel);
 
-
         for (int i = 0; i < PARTICLE_COUNT; i++) {
-
-            double spread = 7.5; // size of the cloud
-
+            double spread = 7.5;
             double px = origin.x + (rand.nextDouble() - 0.5) * spread;
             double py = origin.y + (rand.nextDouble() - 0.5) * spread;
             double pz = origin.z + (rand.nextDouble() - 0.5) * spread;
-
             double vx = (rand.nextDouble() - 0.5) * 0.05;
             double vy = (rand.nextDouble() - 0.5) * 0.05;
             double vz = (rand.nextDouble() - 0.5) * 0.05;
-
-            serverLevel.sendParticles(
-                    new DustParticleOptions(
-                            new Vector3f(
-                                    getColor().getTextureDiffuseColors()[0],
-                                    getColor().getTextureDiffuseColors()[1],
-                                    getColor().getTextureDiffuseColors()[2]
-                            ),
-                            1.2f
-                    ),
-                    px, py, pz,
-                    0,
-                    vx, vy, vz,
-                    1.0
-            );
+            serverLevel.sendParticles(new DustParticleOptions(new Vector3f(getColor().getTextureDiffuseColors()[0], getColor().getTextureDiffuseColors()[1], getColor().getTextureDiffuseColors()[2]), 1.2f), px, py, pz, 0, vx, vy, vz, 1.0);
         }
 
-
-
-        // Pre-create a template dipped brush with infinite paint
         ItemStack brushStack = new ItemStack(PItems.DIPPED_PAINT_BRUSHES.get(getColor().getId()).get());
         DippedPaintBrushItem brush = (DippedPaintBrushItem) brushStack.getItem();
         brush.setPaintCount(brushStack, 9999);
@@ -170,43 +143,29 @@ public class PrimedPnt extends PrimedTnt {
         fakePlayer.setGameMode(GameType.CREATIVE);
 
         for (int i = 0; i < RAY_COUNT; i++) {
-            // --- 1. Sample a random direction on the unit sphere
             double z = rand.nextDouble() * 2.0 - 1.0;
             double t = rand.nextDouble() * Math.PI * 2.0;
             double r = Math.sqrt(1.0 - z * z);
             Vec3 dir = new Vec3(r * Math.cos(t), r * Math.sin(t), z);
 
-            // --- 2. Perform a ray trace
-            Vec3 start = origin.add(dir.scale(0.6));        // start slightly outwards
-            Vec3 end   = origin.add(dir.scale(RADIUS));     // extend to max radius
+            Vec3 start = origin.add(dir.scale(0.6));
+            Vec3 end = origin.add(dir.scale(RADIUS));
 
             ClipContext ctx = new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this);
             HitResult hr = this.level().clip(ctx);
-            if (hr.getType() != HitResult.Type.BLOCK) continue;
-
             BlockHitResult bhr = (BlockHitResult) hr;
             BlockPos hitPos = bhr.getBlockPos();
-
-            // --- 3. Validate hit position
-            if (hitPos.distSqr(this.blockPosition()) > (long) RADIUS * RADIUS) continue;
-            if (!painted.add(hitPos)) continue; // dedupe: skip if already painted
-
             BlockState state = this.level().getBlockState(hitPos);
+
+            if (hr.getType() != HitResult.Type.BLOCK) continue;
+            if (hitPos.distSqr(this.blockPosition()) > (long) RADIUS * RADIUS) continue;
+            if (!painted.add(hitPos)) continue;
             if (state.isAir() || state.liquid()) continue;
 
-            // --- 4. Use the brush on the hit block
             BlockHitResult blockHit = new BlockHitResult(Vec3.atCenterOf(hitPos), Direction.UP, hitPos, false);
             UseOnContext ctxUse = new UseOnContext(fakePlayer, InteractionHand.MAIN_HAND, blockHit);
             brush.useOn(ctxUse);
-
-            // --- 5. Example replacement: overwrite block (debug / test behavior)
-            //this.level().setBlockAndUpdate(hitPos, Blocks.DIRT.defaultBlockState());
-
-            // --- 6. Visual feedback
-            //this.level().levelEvent(2001, hitPos, Block.getId(state));
         }
-
-        // --- 7. Cosmetic explosion effect
-        this.level().explode(null, this.getX(), this.getY(), this.getZ(), 0.0F, Level.ExplosionInteraction.NONE);
+        this.level().explode(null, this.getX(), this.getY(), this.getZ(), 0.0F, Level.ExplosionInteraction.TNT);
     }
 }

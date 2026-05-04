@@ -9,6 +9,7 @@ public class PaintableConfig {
 
     public static final ConfigValue<Boolean> CAN_PAINT;
     public static final ConfigValue<Integer> PAINT_LIMIT;
+    public static final ConfigValue<Integer> PNT_EXPLOSION_RADIUS;
 
     static {
         BUILDER.push("Configs for Paintable");
@@ -20,6 +21,10 @@ public class PaintableConfig {
                 .comment("The amount of times you can paint blocks using the brush")
                 .comment("Default: 16")
                 .defineInRange("paint_limit", 16, 4, 64);
+        PNT_EXPLOSION_RADIUS = BUILDER
+                .comment("The radius of PNT explosion")
+                .comment("Default: 6")
+                .defineInRange("pnt_explosion_radius", 6, 1, 20);
         BUILDER.pop();
         SPEC = BUILDER.build();
     }

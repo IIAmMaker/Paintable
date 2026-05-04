@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "paintable:block/indigo_painted_planks",
-    "side": "paintable:block/indigo_painted_planks",
-    "top": "paintable:block/indigo_painted_planks"
-  }
-}

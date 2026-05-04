@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "P": {
+      "item": "paintable:green_paint_bucket"
+    },
+    "S": {
+      "tag": "forge:sand"
+    }
+  },
+  "pattern": [
+    " S ",
+    "GPG",
+    " S "
+  ],
+  "result": {
+    "item": "paintable:green_pnt"
+  },
+  "show_notification": true
+}
